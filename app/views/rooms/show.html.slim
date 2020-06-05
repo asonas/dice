@@ -1,12 +1,12 @@
 .row
   .col-sm-6
-    = form_for Message.new, url: room_messages_path(room_uuid: @room.uuid) do |f|
+    = form_with(model: Message.new, url: room_messages_path(room_uuid: @room.uuid), class: 'js-message-form') do |f|
       .form-group
         label dice_syntax
-        = f.text_field :dice_syntax, class: "form-control"
+        = f.text_field :dice_syntax, class: "form-control js-message-form--input"
 
       .actions
-        = f.submit class: "btn btn-default btn-primary"
+        = f.submit class: "btn btn-default btn-primary js-message-form--submit"
 
   .col-sm-6
     dl.row
