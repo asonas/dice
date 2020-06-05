@@ -1,0 +1,10 @@
+create_table :messages do |t|
+  t.integer :room_id, null: false
+  t.string :body, null: false
+  t.string :dice_syntax, null: false
+  t.string :player_name, null: false
+
+  t.timestamps null: false
+
+  add_index :messages, :room_id
+end

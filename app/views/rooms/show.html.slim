@@ -1,6 +1,22 @@
-p#notice = notice
+.row
+  .col-sm-6
+    = form_for Message.new, url: room_messages_path(room_uuid: @room.uuid) do |f|
+      .form-group
+        label dice_syntax
+        = f.text_field :dice_syntax, class: "form-control"
 
+      .actions
+        = f.submit class: "btn btn-default btn-primary"
 
-=> link_to 'Edit', edit_room_path(@room)
-'|
-=< link_to 'Back', rooms_path
+  .col-sm-6
+    dl.row
+      - @room.messages.order(id: :desc).each do |m|
+        dt.col-sm-3
+          = m.player_name
+        dd.col-sm-9
+          = simple_format m.body
+          small = m.created_at.strftime('%Y/%m/%d %H:%m:s')
+
+.row
+  .col-sm-12
+    = link_to 'Back', rooms_path
