@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails', '~> 6.0.2'
 
+gem 'action_args'
 gem 'bootsnap', require: false
 gem 'jbuilder'
 gem 'pg'
