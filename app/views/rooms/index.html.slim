@@ -1,0 +1,20 @@
+h1 Listing rooms
+
+table.table
+  thead
+    tr
+      th room
+      th
+
+  tbody
+    - @rooms.each do |room|
+      tr
+        td = link_to "Join #{room.name}", room_path(uuid: room.uuid), class: "btn btn-success"
+        td
+          .btn-group
+            = link_to 'Show', room_path(uuid: room.uuid), class: "btn btn-light"
+            = link_to 'Edit', edit_room_path(room, uuid: room.uuid), class: "btn btn-light"
+
+br
+
+= link_to 'New Room', new_room_path, class: "btn btn-primary"

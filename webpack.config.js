@@ -8,7 +8,7 @@ module.exports = {
   mode: isProd ? "production" : "development",
   devtool: "source-map",
   entry: {
-    application: path.resolve(__dirname, "app/javascript/application.js")
+    application: path.resolve(__dirname, "app/javascript/packs/application.js")
   },
   output: {
     path: path.resolve(__dirname, "public/packs"),

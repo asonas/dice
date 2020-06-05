@@ -1,0 +1,7 @@
+create_table :rooms do |t|
+  t.uuid :uuid, null: false
+  t.string :name, null: false
+
+  t.timestamps null: false
+end
+
