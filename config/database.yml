@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: dice_production
-  username: dice
-  password: <%= ENV['dice_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
