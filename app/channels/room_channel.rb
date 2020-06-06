@@ -11,7 +11,13 @@ class RoomChannel < ApplicationCable::Channel
     dice_roll = DiceRoll.new(data["dice_syntax"])
     dice_roll.roll!
     room = Room.find_by!(uuid: data["room_uuid"])
-    message = Message.create(room_id: room.id, body: dice_roll.message, player_name: data["player_name"], dice_syntax: data["dice_syntax"])
+    message = Message.create(
+      room_id: room.id,
+      body: dice_roll.message,
+      player_name: data["player_name"],
+      dice_syntax: data["dice_syntax"],
+      skill_name: data["skill_name"]
+    )
 
     if dice_roll.valid? && message.save
       ActionCable.server.broadcast 'room_channel', message: render_message(message)

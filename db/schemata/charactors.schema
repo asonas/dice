@@ -1,0 +1,14 @@
+create_table :charactors do |t|
+  t.string :player_name
+  t.string :name, null: false
+  t.integer :siz
+  t.integer :app
+  t.integer :str
+  t.integer :con
+  t.integer :dex
+  t.integer :int
+  t.integer :edu
+  t.integer :pow
+  t.integer :san
+  t.json :raw_data
+end

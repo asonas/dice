@@ -1,6 +1,8 @@
 dt.col-sm-3
   = message.player_name
 dd.col-sm-9
+  strong = message.skill_name
+  br
   = simple_format message.body
   small = message.created_at.strftime('%Y/%m/%d %H:%m:%S')
 
