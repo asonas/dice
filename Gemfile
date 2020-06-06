@@ -16,6 +16,8 @@ gem 'slim-rails'
 group :development do
   gem 'awesome_print'
   gem 'byebug', platform: :mri
+  gem "capistrano", require: false
+  gem 'capistrano-rbenv'
   gem 'listen'
   gem 'pry-byebug', group: :test
   gem 'pry-rails', group: :test
