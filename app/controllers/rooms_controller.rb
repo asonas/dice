@@ -9,8 +9,9 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1
   # GET /rooms/1.json
-  def show
-    @messages = @room.messages.dup
+  def show(charactor_id)
+    @messages = @room.messages
+    @charactor = Charactor.find charactor_id
   end
 
   # GET /rooms/new

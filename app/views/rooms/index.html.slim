@@ -9,7 +9,13 @@ table.table
   tbody
     - @rooms.each do |room|
       tr
-        td = link_to "Join #{room.name}", room_path(uuid: room.uuid), class: "btn btn-success"
+        td
+          = form_with url: room_path(uuid: room.uuid), local: true, method: :get do |f|
+            .form-row
+              .form-group.col-sm-8
+                = f.select :charactor_id, Charactor.all.map { |c| [c.name, c.id] }, { include_blank: true }, { class: "form-control" }
+              .form-group.col-sm-4
+                = f.submit "Join #{room.name}", class: "btn btn-success"
         td
           .btn-group
             = link_to 'Show', room_path(uuid: room.uuid), class: "btn btn-light"

@@ -12,16 +12,16 @@ const chatChannel = consumer.subscriptions.create("RoomChannel", {
   },
 
   received(data) {
-    console.log("received: " + data)
     return document.querySelector('.js-messages').insertAdjacentHTML('afterbegin', data['message']);
   },
 
-  speak: function() {
-    console.log("speak: ")
+  speak: function(event) {
+    console.log("speak")
     let roomUuid = document.querySelector(".js-room-id").value
     let playerName = document.querySelector(".js-player-name").value
-    let skillName = document.querySelector(".js-skill-name").value
-    let diceSyntax = document.querySelector(".js-dice-syntax").value
+    let skillContainerEle = event.target.parentNode.parentNode
+    let skillName = skillContainerEle.querySelector(".js-skill-name").value
+    let diceSyntax = skillContainerEle.querySelector(".js-dice-syntax").value
     console.log(diceSyntax)
     return this.perform('speak', {
       room_uuid: roomUuid,
@@ -33,12 +33,13 @@ const chatChannel = consumer.subscriptions.create("RoomChannel", {
 });
 
 window.addEventListener('DOMContentLoaded', (event) => {
-  console.log('DOM fully loaded and parsed');
-  document.querySelector(".js-message-form--submit").addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log('click')
-    chatChannel.speak()
-  });
+  document.querySelectorAll(".js-message-form--submit").forEach((el) => {
+    el.addEventListener('click', (event) => {
+      console.log('Roll!')
+      event.preventDefault();
+      chatChannel.speak(event)
+    }, false);
+  })
 });
 
 

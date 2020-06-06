@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'rooms#index'
   resources :rooms, param: :uuid do
     resources :messages
   end

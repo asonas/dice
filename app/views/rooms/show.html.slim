@@ -4,14 +4,26 @@
       input(type="hidden" name="room_id" class="js-room-id" value=@room.uuid)
       .form-group
         label PlayerName
-        input.form-control.js-player-name(type="text" name="player_name" value="asonas")
-      .form-row
-        .col
-          input.form-control.js-skill-name(type="text" name="skill_name" placeholder="技能名" value="平目")
-        .col
-          input.form-control.js-dice-syntax(type="text" name="dice_syntax" placeholder="1d100" value="1d100")
-        .col
-          button.btn.btn-default.btn-primary.js-message-form--submit Roll!
+        input.form-control.js-player-name(type="text" name="player_name" value=@charactor.name)
+      .row.justify-content-between
+        .col-sm-12
+          .form-row.js-skill-container
+            .form-group.col-auto
+              input.form-control.js-skill-name(type="text" name="skill_name" placeholder="技能名" value="平目")
+            .form-group.col-auto
+              input.form-control.js-dice-syntax(type="text" name="dice_syntax" placeholder="1d100" value="1d100")
+            .form-group.col-auto
+              button.btn.btn-default.btn-primary.js-message-form--submit Roll!
+      .row
+        - @charactor.skills.each do |s, _v|
+          .col-sm-6
+            .form-row.js-skill-container
+              .form-group.col-sm-7
+                input.form-control.form-control-sm.js-skill-name(type="text" name="skill_name" placeholder="技能名" value=s)
+              .form-group.col-sm-3
+                input.form-control.form-control-sm.js-dice-syntax(type="text" name="dice_syntax" placeholder="1d100" value="1d100")
+              .form-group.col-sm-2
+                .btn.btn-sm.btn-primary.js-message-form--submit Roll!
 
   .col-sm-4
     dl.row.js-messages
