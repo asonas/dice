@@ -1,21 +1,22 @@
 .row
-  .col-sm-6
-    = form_with(model: Message.new, url: room_messages_path(room_uuid: @room.uuid), class: 'js-message-form') do |f|
+  .col-sm-8
+    form.js-message-form
+      input(type="hidden" name="room_id" class="js-room-id" value=@room.uuid)
       .form-group
-        label dice_syntax
-        = f.text_field :dice_syntax, class: "form-control js-message-form--input"
+        label PlayerName
+        input.form-control.js-player-name(type="text" name="player_name" value="asonas")
+      .form-row
+        .col
+          input.form-control.js-skill-name(type="text" name="skill_name" placeholder="技能名" value="平目")
+        .col
+          input.form-control.js-dice-syntax(type="text" name="dice_syntax" placeholder="1d100" value="1d100")
+        .col
+          button.btn.btn-default.btn-primary.js-message-form--submit Roll!
 
-      .actions
-        = f.submit class: "btn btn-default btn-primary js-message-form--submit"
-
-  .col-sm-6
-    dl.row
+  .col-sm-4
+    dl.row.js-messages
       - @room.messages.order(id: :desc).each do |m|
-        dt.col-sm-3
-          = m.player_name
-        dd.col-sm-9
-          = simple_format m.body
-          small = m.created_at.strftime('%Y/%m/%d %H:%m:s')
+        = render partial: 'messages/message', locals: { message: m }
 
 .row
   .col-sm-12

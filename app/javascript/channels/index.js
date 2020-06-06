@@ -1,19 +1,5 @@
-import createChannel from "./consumer";
+// Load all the channels within this directory and all subdirectories.
+// Channel files must be named *_channel.js.
 
-let callback;
-
-const chat = createChannel("ChatChannel", {
-  received({ message }) {
-    if (callback) callback.call(null, message);
-  }
-});
-
-function sendMessage(message) {
-  chat.perform("send_message", { message });
-}
-
-function setCallback(fn) {
-  callback = fn;
-}
-
-export { sendMessage, setCallback };
+const channels = require.context('.', true, /_channel\.js$/)
+channels.keys().forEach(channels)
