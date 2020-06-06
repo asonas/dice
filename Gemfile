@@ -17,8 +17,8 @@ group :development do
   gem 'awesome_print'
   gem 'byebug', platform: :mri
   gem 'listen'
-  gem 'pry', group: :test
   gem 'pry-byebug', group: :test
+  gem 'pry-rails', group: :test
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'web-console'
