@@ -1,5 +1,5 @@
 require 'csv'
-class Charactor < ApplicationRecord
+class Character < ApplicationRecord
   validates :name, uniqueness: true
   ACCEPTED_NPC_ATTRIBUTES = %w[
     name
@@ -19,7 +19,7 @@ class Charactor < ApplicationRecord
     csv = CSV.parse(csv, headers: true)
 
     csv.each do |row|
-      Charactor.create!(
+      Character.create!(
         player_name: row["シート名"],
         name: row["キャラ名"],
         siz: row["SIZ(体格)"],

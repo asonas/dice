@@ -13,7 +13,7 @@ table.table
           = form_with url: room_path(uuid: room.uuid), local: true, method: :get do |f|
             .form-row
               .form-group.col-sm-8
-                = f.select :charactor_id, Charactor.all.map { |c| [c.name, c.id] }, { include_blank: true }, { class: "form-control" }
+                = f.select :charactor_id, Character.all.map { |c| [c.name, c.id] }, { include_blank: true }, { class: "form-control" }
               .form-group.col-sm-4
                 = f.submit "Join #{room.name}", class: "btn btn-success"
         td

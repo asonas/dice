@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1.json
   def show(charactor_id)
     @messages = @room.messages
-    @charactor = Charactor.find charactor_id
+    @charactor = Character.find charactor_id
   end
 
   # GET /rooms/new
