@@ -35,7 +35,7 @@ class DiceRoll
 
     @dices.each do |d|
       1.upto d.amount do |i|
-        c = (1..d.face_count).to_a.sample
+        c = rand(1..d.face_count)
         r["#{d.dice_syntax}(#{i})"] = c
       end
     end
